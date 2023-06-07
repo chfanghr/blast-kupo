@@ -12,7 +12,7 @@ import (
 
 	"net/url"
 
-	"github.com/dave/blast/blaster"
+	"github.com/chfanghr/blast-kupo/blaster"
 	"github.com/mitchellh/mapstructure"
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/google"

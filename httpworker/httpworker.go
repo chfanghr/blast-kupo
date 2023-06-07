@@ -12,7 +12,7 @@ import (
 
 	"errors"
 
-	"github.com/dave/blast/blaster"
+	"github.com/chfanghr/blast-kupo/blaster"
 	"github.com/mitchellh/mapstructure"
 )
 

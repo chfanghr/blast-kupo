@@ -4,13 +4,13 @@ go 1.19
 
 require (
 	cloud.google.com/go/storage v1.30.1
-	github.com/dave/blast v0.0.0-20180301095328-f3afebf2d24c
 	github.com/leemcloughlin/gofarmhash v0.0.0-20160919192320-0a055c5b87a8
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/pkg/errors v0.9.1
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.16.0
+	golang.org/x/crypto v0.9.0
 	golang.org/x/oauth2 v0.8.0
 )
 
@@ -35,7 +35,6 @@ require (
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/subosito/gotenv v1.4.2 // indirect
 	go.opencensus.io v0.24.0 // indirect
-	golang.org/x/crypto v0.9.0 // indirect
 	golang.org/x/net v0.10.0 // indirect
 	golang.org/x/sys v0.8.0 // indirect
 	golang.org/x/text v0.9.0 // indirect

@@ -11,7 +11,7 @@ import (
 
 	"sync"
 
-	"github.com/dave/blast/blaster"
+	"github.com/chfanghr/blast-kupo/blaster"
 )
 
 func ExampleBlaster_Start_batchJob() {
