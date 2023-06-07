@@ -4,24 +4,22 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+    gomod2nix.url = "github:nix-community/gomod2nix";
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let pkgs = import nixpkgs { inherit system; };
-      in
-      {
-        devShell = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            go
-            gotools
-            golangci-lint
-            gopls
-            go-outline
-            gopkgs
-            go-tools
-            delve
-          ];
-        };
-      });
+  outputs = {
+    self,
+    nixpkgs,
+    flake-utils,
+    gomod2nix
+  }:
+    flake-utils.lib.eachDefaultSystem (system: let
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [gomod2nix.overlays.default];
+      };
+    in {
+      packages.default = pkgs.callPackage ./. {};
+      devShells.default = import ./shell.nix {inherit pkgs;};
+    });
 }
