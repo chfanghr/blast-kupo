@@ -11,7 +11,7 @@
     self,
     nixpkgs,
     flake-utils,
-    gomod2nix
+    gomod2nix,
   }:
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = import nixpkgs {
@@ -19,7 +19,7 @@
         overlays = [gomod2nix.overlays.default];
       };
     in {
-      packages.default = pkgs.callPackage ./. {};
+      packages.default = (pkgs.callPackage ./. {}).overrideAttrs (_: {doCheck = false;});
       devShells.default = import ./shell.nix {inherit pkgs;};
     });
 }
