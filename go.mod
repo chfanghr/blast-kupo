@@ -4,6 +4,7 @@ go 1.19
 
 require (
 	cloud.google.com/go/storage v1.30.1
+	eagain.net/go/bech32 v0.0.1
 	github.com/leemcloughlin/gofarmhash v0.0.0-20160919192320-0a055c5b87a8
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/pkg/errors v0.9.1
