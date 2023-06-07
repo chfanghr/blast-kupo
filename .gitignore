@@ -29,4 +29,7 @@ _testmain.go
 .idea/
 coverage.out
 out.log
-dist/
+blast-kupo
+.direnv
+.envrc
+result
