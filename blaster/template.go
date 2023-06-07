@@ -2,18 +2,22 @@ package blaster
 
 import (
 	"bytes"
+	"fmt"
+	"log"
 	"text/template"
 
 	"math/rand"
 	"time"
 
 	"github.com/pkg/errors"
+	"golang.org/x/crypto/blake2b"
 )
 
 var builtins = template.FuncMap{
-	"rand_int":    randInt,
-	"rand_string": randString,
-	"rand_float":  randFloat,
+	"rand_int":        randInt,
+	"rand_string":     randString,
+	"rand_float":      randFloat,
+	"rand_blake2b256": randBlake2b256,
 }
 
 func randInt(from int, to int) interface{} {
@@ -22,6 +26,20 @@ func randInt(from int, to int) interface{} {
 
 func randFloat(from float64, to float64) interface{} {
 	return (rand.Float64() * (to - from)) + from
+}
+
+func randBlake2b256() interface{} {
+	// Make a buffer with the size of 128 bytes.
+	// The generator will fill it with random junk.
+	buf := make([]byte, 128)
+	_, err := rand.Read(buf)
+	if err != nil {
+		log.Printf("Error while generating random bytes: %s", err)
+		// Fill it with zero bytes.
+		buf = make([]byte, 128)
+	}
+	hash := blake2b.Sum256(buf)
+	return fmt.Sprintf("%x", hash)
 }
 
 func randString(length int) interface{} {
